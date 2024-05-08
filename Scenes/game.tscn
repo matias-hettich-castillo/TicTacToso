@@ -1,12 +1,36 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjkxc1cgheqyk"]
+[gd_scene load_steps=17 format=3 uid="uid://bjkxc1cgheqyk"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_bkmcd"]
 [ext_resource type="Texture2D" uid="uid://d3gv4cj56nwb2" path="res://Assets/Sprites/Panels/blue_panel.png" id="2_ljr84"]
 [ext_resource type="Texture2D" uid="uid://ct7v5v6m4l4ep" path="res://Assets/Sprites/Panels/grey_panel.png" id="3_owssb"]
 [ext_resource type="FontFile" uid="uid://lvokh6c5k3g0" path="res://Assets/Fonts/kenvector_future.ttf" id="4_pxbho"]
+[ext_resource type="Script" path="res://Scripts/tile.gd" id="5_kfkw1"]
 [ext_resource type="Texture2D" uid="uid://cra0hsa0s4nhb" path="res://Assets/Sprites/Buttons/Button_Normal.png" id="5_oxbnr"]
+[ext_resource type="Script" path="res://Scripts/game_status.gd" id="5_po3se"]
 [ext_resource type="Texture2D" uid="uid://7bty81fujscm" path="res://Assets/Sprites/Buttons/Button_Hover.png" id="6_xs8po"]
 [ext_resource type="Texture2D" uid="uid://c2plgo14g4xiy" path="res://Assets/Sprites/Buttons/Button_Pressed.png" id="7_cnuqu"]
+[ext_resource type="Texture2D" uid="uid://bm4nieg8e7be6" path="res://Assets/Sprites/Tiles/blue_button06.png" id="8_h0rk3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c5pq5"]
+texture = ExtResource("8_h0rk3")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cd8if"]
+texture = ExtResource("8_h0rk3")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y00hj"]
+texture = ExtResource("8_h0rk3")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvv3b"]
 texture = ExtResource("5_oxbnr")
@@ -31,16 +55,289 @@ texture_margin_bottom = 12.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_bkmcd")
+metadata/_edit_vertical_guides_ = [32.0, 0.0, 928.0, 960.0, 320.0, 640.0]
+metadata/_edit_horizontal_guides_ = [32.0, 504.0, 136.0, 456.0]
 
-[node name="Panel" type="Control" parent="."]
+[node name="GamePanel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 928.0
+offset_bottom = 504.0
+
+[node name="Border" type="NinePatchRect" parent="GamePanel"]
+layout_mode = 0
+offset_right = 896.0
+offset_bottom = 472.0
+texture = ExtResource("2_ljr84")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Background" type="NinePatchRect" parent="GamePanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 888.0
+offset_bottom = 464.0
+texture = ExtResource("3_owssb")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="GameStatus" type="Label" parent="GamePanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 888.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("4_pxbho")
+theme_override_font_sizes/font_size = 24
+text = "New Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_po3se")
+
+[node name="Board" type="Control" parent="GamePanel"]
+anchors_preset = 0
+offset_left = 288.0
+offset_top = 104.0
+offset_right = 608.0
+offset_bottom = 424.0
+
+[node name="Tile" type="Control" parent="GamePanel/Board"]
+anchors_preset = 0
+offset_right = 96.0
+offset_bottom = 96.0
+script = ExtResource("5_kfkw1")
+metadata/_edit_group_ = true
+
+[node name="Button" type="Button" parent="GamePanel/Board/Tile"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+
+[node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="Tile2" type="Control" parent="GamePanel/Board"]
+anchors_preset = 0
+offset_left = 112.0
+offset_right = 208.0
+offset_bottom = 96.0
+script = ExtResource("5_kfkw1")
+metadata/_edit_group_ = true
+
+[node name="Button" type="Button" parent="GamePanel/Board/Tile2"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+
+[node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="Tile3" type="Control" parent="GamePanel/Board"]
+anchors_preset = 0
+offset_left = 224.0
+offset_right = 320.0
+offset_bottom = 96.0
+script = ExtResource("5_kfkw1")
+metadata/_edit_group_ = true
+
+[node name="Button" type="Button" parent="GamePanel/Board/Tile3"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+
+[node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile3"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="Tile4" type="Control" parent="GamePanel/Board"]
+anchors_preset = 0
+offset_top = 112.0
+offset_right = 96.0
+offset_bottom = 208.0
+script = ExtResource("5_kfkw1")
+metadata/_edit_group_ = true
+
+[node name="Button" type="Button" parent="GamePanel/Board/Tile4"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+
+[node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile4"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="Tile5" type="Control" parent="GamePanel/Board"]
+anchors_preset = 0
+offset_left = 112.0
+offset_top = 112.0
+offset_right = 208.0
+offset_bottom = 208.0
+script = ExtResource("5_kfkw1")
+metadata/_edit_group_ = true
+
+[node name="Button" type="Button" parent="GamePanel/Board/Tile5"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+
+[node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile5"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="Tile6" type="Control" parent="GamePanel/Board"]
+anchors_preset = 0
+offset_left = 224.0
+offset_top = 112.0
+offset_right = 320.0
+offset_bottom = 208.0
+script = ExtResource("5_kfkw1")
+metadata/_edit_group_ = true
+
+[node name="Button" type="Button" parent="GamePanel/Board/Tile6"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+
+[node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile6"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="Tile7" type="Control" parent="GamePanel/Board"]
+anchors_preset = 0
+offset_top = 224.0
+offset_right = 96.0
+offset_bottom = 320.0
+script = ExtResource("5_kfkw1")
+metadata/_edit_group_ = true
+
+[node name="Button" type="Button" parent="GamePanel/Board/Tile7"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+
+[node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile7"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="Tile8" type="Control" parent="GamePanel/Board"]
+anchors_preset = 0
+offset_left = 112.0
+offset_top = 224.0
+offset_right = 208.0
+offset_bottom = 320.0
+script = ExtResource("5_kfkw1")
+metadata/_edit_group_ = true
+
+[node name="Button" type="Button" parent="GamePanel/Board/Tile8"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+
+[node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile8"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="Tile9" type="Control" parent="GamePanel/Board"]
+anchors_preset = 0
+offset_left = 224.0
+offset_top = 224.0
+offset_right = 320.0
+offset_bottom = 320.0
+script = ExtResource("5_kfkw1")
+metadata/_edit_group_ = true
+
+[node name="Button" type="Button" parent="GamePanel/Board/Tile9"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+
+[node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile9"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="GameOverPanel" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 320.0
-offset_top = 128.0
+offset_top = 160.0
 offset_right = 640.0
-offset_bottom = 392.0
+offset_bottom = 424.0
+metadata/_edit_group_ = true
 
-[node name="Border" type="NinePatchRect" parent="Panel"]
+[node name="Border" type="NinePatchRect" parent="GameOverPanel"]
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 264.0
@@ -50,7 +347,7 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="Background" type="NinePatchRect" parent="Panel"]
+[node name="Background" type="NinePatchRect" parent="GameOverPanel"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 64.0
@@ -63,19 +360,19 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="Title" type="Label" parent="Panel"]
+[node name="Title" type="Label" parent="GameOverPanel"]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 24.0
-offset_right = 264.0
-offset_bottom = 51.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 312.0
+offset_bottom = 56.0
 theme_override_fonts/font = ExtResource("4_pxbho")
 theme_override_font_sizes/font_size = 24
 text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayAgainButton" type="Button" parent="Panel"]
+[node name="PlayAgainButton" type="Button" parent="GameOverPanel"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 104.0
@@ -88,7 +385,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_khwco")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_hlof2")
 text = "Play Again"
 
-[node name="ExitButton" type="Button" parent="Panel"]
+[node name="ExitButton" type="Button" parent="GameOverPanel"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 160.0
@@ -101,4 +398,23 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_khwco")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_hlof2")
 text = "Exit"
 
-[connection signal="pressed" from="Panel/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="next_turn" from="GamePanel/Board/Tile" to="." method="_on_tile_next_turn"]
+[connection signal="pressed" from="GamePanel/Board/Tile/Button" to="GamePanel/Board/Tile" method="_on_button_pressed"]
+[connection signal="next_turn" from="GamePanel/Board/Tile2" to="." method="_on_tile_next_turn"]
+[connection signal="pressed" from="GamePanel/Board/Tile2/Button" to="GamePanel/Board/Tile2" method="_on_button_pressed"]
+[connection signal="next_turn" from="GamePanel/Board/Tile3" to="." method="_on_tile_next_turn"]
+[connection signal="pressed" from="GamePanel/Board/Tile3/Button" to="GamePanel/Board/Tile3" method="_on_button_pressed"]
+[connection signal="next_turn" from="GamePanel/Board/Tile4" to="." method="_on_tile_next_turn"]
+[connection signal="pressed" from="GamePanel/Board/Tile4/Button" to="GamePanel/Board/Tile4" method="_on_button_pressed"]
+[connection signal="next_turn" from="GamePanel/Board/Tile5" to="." method="_on_tile_next_turn"]
+[connection signal="pressed" from="GamePanel/Board/Tile5/Button" to="GamePanel/Board/Tile5" method="_on_button_pressed"]
+[connection signal="next_turn" from="GamePanel/Board/Tile6" to="." method="_on_tile_next_turn"]
+[connection signal="pressed" from="GamePanel/Board/Tile6/Button" to="GamePanel/Board/Tile6" method="_on_button_pressed"]
+[connection signal="next_turn" from="GamePanel/Board/Tile7" to="." method="_on_tile_next_turn"]
+[connection signal="pressed" from="GamePanel/Board/Tile7/Button" to="GamePanel/Board/Tile7" method="_on_button_pressed"]
+[connection signal="next_turn" from="GamePanel/Board/Tile8" to="." method="_on_tile_next_turn"]
+[connection signal="pressed" from="GamePanel/Board/Tile8/Button" to="GamePanel/Board/Tile8" method="_on_button_pressed"]
+[connection signal="next_turn" from="GamePanel/Board/Tile9" to="." method="_on_tile_next_turn"]
+[connection signal="pressed" from="GamePanel/Board/Tile9/Button" to="GamePanel/Board/Tile9" method="_on_button_pressed"]
+[connection signal="pressed" from="GameOverPanel/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="GameOverPanel/ExitButton" to="." method="_on_exit_button_pressed"]
