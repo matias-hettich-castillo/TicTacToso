@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://d2ypoti187s5b"]
+
+[ext_resource type="Script" path="res://Scripts/credits.gd" id="1_40j1j"]
+[ext_resource type="Texture2D" uid="uid://d3gv4cj56nwb2" path="res://Assets/Sprites/Panels/blue_panel.png" id="1_p8u3j"]
+[ext_resource type="Texture2D" uid="uid://ct7v5v6m4l4ep" path="res://Assets/Sprites/Panels/grey_panel.png" id="2_biu5n"]
+[ext_resource type="FontFile" uid="uid://lvokh6c5k3g0" path="res://Assets/Fonts/kenvector_future.ttf" id="3_u7f6y"]
+[ext_resource type="Texture2D" uid="uid://cra0hsa0s4nhb" path="res://Assets/Sprites/Buttons/Button_Normal.png" id="4_flqqe"]
+[ext_resource type="Texture2D" uid="uid://7bty81fujscm" path="res://Assets/Sprites/Buttons/Button_Hover.png" id="5_xsem8"]
+[ext_resource type="Texture2D" uid="uid://c2plgo14g4xiy" path="res://Assets/Sprites/Buttons/Button_Pressed.png" id="6_mgnxh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvv3b"]
+texture = ExtResource("4_flqqe")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_khwco"]
+texture = ExtResource("5_xsem8")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hlof2"]
+texture = ExtResource("6_mgnxh")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_40j1j")
+
+[node name="Panel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 896.0
+offset_bottom = 512.0
+
+[node name="Border" type="NinePatchRect" parent="Panel"]
+layout_mode = 0
+offset_right = 832.0
+offset_bottom = 448.0
+texture = ExtResource("1_p8u3j")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Background" type="NinePatchRect" parent="Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 824.0
+offset_bottom = 440.0
+texture = ExtResource("2_biu5n")
+region_rect = Rect2(0, 0, 100, 100)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 24.0
+offset_right = 520.0
+offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("3_u7f6y")
+theme_override_font_sizes/font_size = 24
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 88.0
+offset_right = 800.0
+offset_bottom = 344.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_u7f6y")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Tic-Tac-Toe by Matias Hettich
+
+GUI textures by Kenney[/center]"
+
+[node name="BackButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 680.0
+offset_top = 376.0
+offset_right = 808.0
+offset_bottom = 424.0
+theme_override_fonts/font = ExtResource("3_u7f6y")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_rvv3b")
+theme_override_styles/hover = SubResource("StyleBoxTexture_khwco")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_hlof2")
+text = "Back"
+
+[connection signal="pressed" from="Panel/BackButton" to="." method="_on_back_button_pressed"]
