@@ -42,5 +42,9 @@ func _on_button_pressed():
 		
 		# Check for wining condition
 		if $"../../..".check_board(player):
+			if player == "X":
+				$"../../..".update_status_bar("Player's O turn")
+			else:
+				$"../../..".update_status_bar("Player's X turn")
 			# Emit signal to switch turn
 			emit_signal("next_turn")

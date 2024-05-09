@@ -36,12 +36,8 @@ var tiles_2 = ["","",""]
 # Game over panel
 @onready var gameOverPanel = $GameOverPanel
 
-func _process(_delta):
-	# Get the current player
-	var player = get_player()
-	
-	# Inform the player about the game status
-	statusBar.text = "Player " + player + "'s turn"
+func update_status_bar(text):
+	statusBar.text = text
 
 # Called when a player's turn end
 func next_turn():
@@ -89,6 +85,7 @@ func check_board(player):
 	
 	if draw_condition:
 		#gameState = GAME_STATE.GAME_OVER
+		update_status_bar("It's a draw!")
 		gameOverPanel.show()
 		return false
 	
@@ -120,6 +117,7 @@ func check_board(player):
 	print("check win condition")
 	if win_condition != "":
 		#gameState = GAME_STATE.GAME_OVER
+		update_status_bar("Player " + player + " wins!")
 		gameOverPanel.show()
 		return false
 		
