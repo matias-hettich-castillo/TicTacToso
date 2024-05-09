@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bjkxc1cgheqyk"]
+[gd_scene load_steps=16 format=3 uid="uid://bjkxc1cgheqyk"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_bkmcd"]
 [ext_resource type="Texture2D" uid="uid://d3gv4cj56nwb2" path="res://Assets/Sprites/Panels/blue_panel.png" id="2_ljr84"]
@@ -6,7 +6,6 @@
 [ext_resource type="FontFile" uid="uid://lvokh6c5k3g0" path="res://Assets/Fonts/kenvector_future.ttf" id="4_pxbho"]
 [ext_resource type="Script" path="res://Scripts/tile.gd" id="5_kfkw1"]
 [ext_resource type="Texture2D" uid="uid://cra0hsa0s4nhb" path="res://Assets/Sprites/Buttons/Button_Normal.png" id="5_oxbnr"]
-[ext_resource type="Script" path="res://Scripts/game_status.gd" id="5_po3se"]
 [ext_resource type="Texture2D" uid="uid://7bty81fujscm" path="res://Assets/Sprites/Buttons/Button_Hover.png" id="6_xs8po"]
 [ext_resource type="Texture2D" uid="uid://c2plgo14g4xiy" path="res://Assets/Sprites/Buttons/Button_Pressed.png" id="7_cnuqu"]
 [ext_resource type="Texture2D" uid="uid://bm4nieg8e7be6" path="res://Assets/Sprites/Tiles/blue_button06.png" id="8_h0rk3"]
@@ -99,7 +98,6 @@ theme_override_font_sizes/font_size = 24
 text = "New Game"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("5_po3se")
 
 [node name="Board" type="Control" parent="GamePanel"]
 anchors_preset = 0

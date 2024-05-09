@@ -8,11 +8,11 @@ enum {
 var turn = TURN_X
 
 # Used to track the game state
-enum GAME_STATE {
-	PLAY,
-	GAME_OVER
-}
-var gameState = GAME_STATE.PLAY
+#enum GAME_STATE {
+	#PLAY,
+	#GAME_OVER
+#}
+#var gameState = GAME_STATE.PLAY
 
 # Array that stores the tiles played in the game
 var tiles_0 = ["","",""]
@@ -37,21 +37,6 @@ var tiles_2 = ["","",""]
 @onready var gameOverPanel = $GameOverPanel
 
 func _process(_delta):
-	# Update the first row of tile arrays
-	tiles_0[0] = tile_1.get_tile_value()
-	tiles_0[1] = tile_2.get_tile_value()
-	tiles_0[2] = tile_3.get_tile_value()
-	
-	# Update the second row of tile arrays
-	tiles_1[0] = tile_4.get_tile_value()
-	tiles_1[1] = tile_5.get_tile_value()
-	tiles_1[2] = tile_6.get_tile_value()
-	
-	# Update the third row of tile arrays
-	tiles_2[0] = tile_7.get_tile_value()
-	tiles_2[1] = tile_8.get_tile_value()
-	tiles_2[2] = tile_9.get_tile_value()
-	
 	# Get the current player
 	var player = get_player()
 	
@@ -74,16 +59,40 @@ func get_player():
 
 # Called to check the board for game over conditions
 func check_board(player):
+	print("begin check board")
+	print("update tile values")
+	# Update the first row of tile arrays
+	tiles_0[0] = tile_1.get_tile_value()
+	tiles_0[1] = tile_2.get_tile_value()
+	tiles_0[2] = tile_3.get_tile_value()
+	
+	# Update the second row of tile arrays
+	tiles_1[0] = tile_4.get_tile_value()
+	tiles_1[1] = tile_5.get_tile_value()
+	tiles_1[2] = tile_6.get_tile_value()
+	
+	# Update the third row of tile arrays
+	tiles_2[0] = tile_7.get_tile_value()
+	tiles_2[1] = tile_8.get_tile_value()
+	tiles_2[2] = tile_9.get_tile_value()
+	
+	print("checking player: " + str(player))
 	var win_condition = ""
 	
-	var draw_condition = true
-	
 	# Check draw condition
+	print("Check draw condition")
+	var draw_condition = true
 	for i in 3:
 		if tiles_0[i] == "" or tiles_1[i] == "" or tiles_2[i] == "":
-			print("No Draw!")
+			print("Row " + str(i) + " there's a free space")
 			draw_condition = false
 	
+	if draw_condition:
+		#gameState = GAME_STATE.GAME_OVER
+		gameOverPanel.show()
+		return false
+	
+	print("begin check columns")
 	# Check columns
 	if tiles_0[0] == player and tiles_1[0] == player and tiles_2[0] == player:
 		win_condition = player
@@ -92,6 +101,7 @@ func check_board(player):
 	if tiles_0[2] == player and tiles_1[2] == player and tiles_2[2] == player:
 		win_condition = player
 	
+	print("begin check rows")
 	# Check rows
 	if tiles_0[0] == player and tiles_0[1] == player and tiles_0[2] == player:
 		win_condition = player
@@ -100,17 +110,20 @@ func check_board(player):
 	if tiles_2[0] == player and tiles_2[1] == player and tiles_2[2] == player:
 		win_condition = player
 	
+	print("begin check cross")
 	# Check cross
 	if tiles_0[0] == player and tiles_1[1] == player and tiles_2[2] == player:
 		win_condition = player
 	if tiles_0[2] == player and tiles_1[1] == player and tiles_2[0] == player:
 		win_condition = player
 	
+	print("check win condition")
 	if win_condition != "":
+		#gameState = GAME_STATE.GAME_OVER
 		gameOverPanel.show()
-	
-	if draw_condition:
-		gameOverPanel.show()
+		return false
+		
+	return true
 
 # Goes back to the main scene
 func _on_exit_button_pressed():
