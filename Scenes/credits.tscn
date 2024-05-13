@@ -35,15 +35,16 @@ script = ExtResource("1_40j1j")
 [node name="Panel" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 896.0
-offset_bottom = 512.0
+offset_left = 32.0
+offset_top = 40.0
+offset_right = 448.0
+offset_bottom = 608.0
 
 [node name="Border" type="NinePatchRect" parent="Panel"]
 layout_mode = 0
-offset_right = 832.0
-offset_bottom = 448.0
+offset_top = -8.0
+offset_right = 416.0
+offset_bottom = 568.0
 texture = ExtResource("1_p8u3j")
 patch_margin_left = 6
 patch_margin_top = 6
@@ -53,9 +54,9 @@ patch_margin_bottom = 6
 [node name="Background" type="NinePatchRect" parent="Panel"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 64.0
-offset_right = 824.0
-offset_bottom = 440.0
+offset_top = 48.0
+offset_right = 408.0
+offset_bottom = 560.0
 texture = ExtResource("2_biu5n")
 region_rect = Rect2(0, 0, 100, 100)
 patch_margin_left = 6
@@ -65,10 +66,9 @@ patch_margin_bottom = 6
 
 [node name="Title" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 312.0
-offset_top = 24.0
-offset_right = 520.0
-offset_bottom = 51.0
+offset_left = 8.0
+offset_right = 408.0
+offset_bottom = 43.0
 theme_override_fonts/font = ExtResource("3_u7f6y")
 theme_override_font_sizes/font_size = 24
 text = "Credits"
@@ -78,24 +78,26 @@ vertical_alignment = 1
 [node name="CreditsLabel" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 80.0
-offset_right = 808.0
-offset_bottom = 360.0
+offset_top = 64.0
+offset_right = 392.0
+offset_bottom = 480.0
 theme_override_colors/font_color = Color(0.498039, 0.498039, 0.498039, 1)
 theme_override_fonts/font = ExtResource("3_u7f6y")
 theme_override_font_sizes/font_size = 24
-text = "Tic-Tac-Toe by Matias Hettich
+text = "Tic-Tac-Toe by
+Matias Hettich
 
-GUI textures by Kenney"
+GUI textures by
+Kenney"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BackButton" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 680.0
-offset_top = 376.0
-offset_right = 808.0
-offset_bottom = 424.0
+offset_left = 256.0
+offset_top = 496.0
+offset_right = 392.0
+offset_bottom = 544.0
 theme_override_fonts/font = ExtResource("3_u7f6y")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxTexture_rvv3b")

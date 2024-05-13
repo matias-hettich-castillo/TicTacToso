@@ -11,12 +11,39 @@ var tile_blank = true
 # Tile icon
 @onready var icon = $Icon
 
+# Tile button
+@onready var button = $Button
+
+func set_disabled(is_draw):
+	if is_draw:
+		var icon_texture
+		if tile_value == "X":
+			icon_texture = preload("res://Assets/Sprites/Tiles/yellow_cross.png")
+		else:
+			icon_texture = preload("res://Assets/Sprites/Tiles/yellow_circle.png")
+		icon.texture = icon_texture
+	button.set_disabled(true)
+
 func get_tile_value():
 	return tile_value
 
+func tile_highlight(win):
+	if !tile_blank:
+		var icon_texture
+		if tile_value == "X":
+			if win:
+				icon_texture = preload("res://Assets/Sprites/Tiles/green_cross.png")
+			else:
+				icon_texture = preload("res://Assets/Sprites/Tiles/red_cross.png")
+		elif tile_value == "O":
+			if win:
+				icon_texture = preload("res://Assets/Sprites/Tiles/green_circle.png")
+			else:
+				icon_texture = preload("res://Assets/Sprites/Tiles/red_circle.png")
+		icon.texture = icon_texture
+
 # Called when the player clicks on this tile
 func _on_button_pressed():
-	print("Tile click: " + str(name))
 	if tile_blank:
 		print("Tile blank")
 		

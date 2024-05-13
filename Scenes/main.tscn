@@ -31,19 +31,21 @@ texture_margin_bottom = 12.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_pg052")
+metadata/_edit_vertical_guides_ = [64.0, 416.0]
+metadata/_edit_horizontal_guides_ = [320.0, 160.0, 480.0]
 
 [node name="Panel" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 320.0
-offset_top = 128.0
-offset_right = 640.0
-offset_bottom = 392.0
+offset_left = 64.0
+offset_top = 160.0
+offset_right = 416.0
+offset_bottom = 440.0
 
 [node name="Border" type="NinePatchRect" parent="Panel"]
 layout_mode = 0
-offset_right = 320.0
-offset_bottom = 264.0
+offset_right = 352.0
+offset_bottom = 280.0
 texture = ExtResource("2_00ccn")
 patch_margin_left = 6
 patch_margin_top = 6
@@ -54,8 +56,8 @@ patch_margin_bottom = 6
 layout_mode = 0
 offset_left = 8.0
 offset_top = 64.0
-offset_right = 312.0
-offset_bottom = 256.0
+offset_right = 344.0
+offset_bottom = 272.0
 texture = ExtResource("3_prnld")
 region_rect = Rect2(0, 0, 100, 100)
 patch_margin_left = 6
@@ -65,10 +67,10 @@ patch_margin_bottom = 6
 
 [node name="Title" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 24.0
-offset_right = 264.0
-offset_bottom = 51.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 336.0
+offset_bottom = 56.0
 theme_override_fonts/font = ExtResource("4_cwrsn")
 theme_override_font_sizes/font_size = 24
 text = "Tic-Tac-Toe"
@@ -77,23 +79,36 @@ vertical_alignment = 1
 
 [node name="StartGameButton" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 104.0
-offset_right = 288.0
-offset_bottom = 152.0
+offset_left = 24.0
+offset_top = 80.0
+offset_right = 328.0
+offset_bottom = 128.0
 theme_override_fonts/font = ExtResource("4_cwrsn")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxTexture_rvv3b")
 theme_override_styles/hover = SubResource("StyleBoxTexture_khwco")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_hlof2")
-text = "Start Game"
+text = "VS Player"
+
+[node name="StartCPUButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 144.0
+offset_right = 328.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("4_cwrsn")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_rvv3b")
+theme_override_styles/hover = SubResource("StyleBoxTexture_khwco")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_hlof2")
+text = "VS CPU"
 
 [node name="CreditsButton" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 160.0
-offset_right = 288.0
-offset_bottom = 208.0
+offset_left = 24.0
+offset_top = 208.0
+offset_right = 328.0
+offset_bottom = 256.0
 theme_override_fonts/font = ExtResource("4_cwrsn")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxTexture_rvv3b")

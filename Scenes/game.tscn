@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bjkxc1cgheqyk"]
+[gd_scene load_steps=26 format=3 uid="uid://bjkxc1cgheqyk"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_bkmcd"]
 [ext_resource type="Texture2D" uid="uid://d3gv4cj56nwb2" path="res://Assets/Sprites/Panels/blue_panel.png" id="2_ljr84"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cra0hsa0s4nhb" path="res://Assets/Sprites/Buttons/Button_Normal.png" id="5_oxbnr"]
 [ext_resource type="Texture2D" uid="uid://7bty81fujscm" path="res://Assets/Sprites/Buttons/Button_Hover.png" id="6_xs8po"]
 [ext_resource type="Texture2D" uid="uid://c2plgo14g4xiy" path="res://Assets/Sprites/Buttons/Button_Pressed.png" id="7_cnuqu"]
+[ext_resource type="Texture2D" uid="uid://cebemt2abvxi3" path="res://Assets/Sprites/Tiles/grey_button07.png" id="8_g4r85"]
 [ext_resource type="Texture2D" uid="uid://bm4nieg8e7be6" path="res://Assets/Sprites/Tiles/blue_button06.png" id="8_h0rk3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c5pq5"]
@@ -26,6 +27,69 @@ texture_margin_bottom = 12.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y00hj"]
 texture = ExtResource("8_h0rk3")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eh2p6"]
+texture = ExtResource("8_g4r85")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_duk68"]
+texture = ExtResource("8_g4r85")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_snbld"]
+texture = ExtResource("8_g4r85")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_myyfe"]
+texture = ExtResource("8_g4r85")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tl8s0"]
+texture = ExtResource("8_g4r85")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_smapt"]
+texture = ExtResource("8_g4r85")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qolwm"]
+texture = ExtResource("8_g4r85")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n0rkd"]
+texture = ExtResource("8_g4r85")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ehmgy"]
+texture = ExtResource("8_g4r85")
 texture_margin_left = 6.0
 texture_margin_top = 6.0
 texture_margin_right = 6.0
@@ -54,21 +118,21 @@ texture_margin_bottom = 12.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_bkmcd")
-metadata/_edit_vertical_guides_ = [32.0, 0.0, 928.0, 960.0, 320.0, 640.0]
-metadata/_edit_horizontal_guides_ = [32.0, 504.0, 136.0, 456.0]
+metadata/_edit_horizontal_guides_ = [32.0, 608.0]
+metadata/_edit_vertical_guides_ = [32.0, 448.0]
 
 [node name="GamePanel" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 32.0
 offset_top = 32.0
-offset_right = 928.0
-offset_bottom = 504.0
+offset_right = 448.0
+offset_bottom = 608.0
 
 [node name="Border" type="NinePatchRect" parent="GamePanel"]
 layout_mode = 0
-offset_right = 896.0
-offset_bottom = 472.0
+offset_right = 416.0
+offset_bottom = 456.0
 texture = ExtResource("2_ljr84")
 patch_margin_left = 6
 patch_margin_top = 6
@@ -79,8 +143,8 @@ patch_margin_bottom = 6
 layout_mode = 0
 offset_left = 8.0
 offset_top = 64.0
-offset_right = 888.0
-offset_bottom = 464.0
+offset_right = 408.0
+offset_bottom = 448.0
 texture = ExtResource("3_owssb")
 patch_margin_left = 6
 patch_margin_top = 6
@@ -91,7 +155,7 @@ patch_margin_bottom = 6
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 888.0
+offset_right = 408.0
 offset_bottom = 56.0
 theme_override_fonts/font = ExtResource("4_pxbho")
 theme_override_font_sizes/font_size = 24
@@ -101,10 +165,11 @@ vertical_alignment = 1
 
 [node name="Board" type="Control" parent="GamePanel"]
 anchors_preset = 0
-offset_left = 288.0
-offset_top = 104.0
-offset_right = 608.0
-offset_bottom = 424.0
+offset_left = 48.0
+offset_top = 96.0
+offset_right = 368.0
+offset_bottom = 416.0
+metadata/_edit_group_ = true
 
 [node name="Tile" type="Control" parent="GamePanel/Board"]
 anchors_preset = 0
@@ -120,6 +185,7 @@ offset_bottom = 96.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
 theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_eh2p6")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile"]
 layout_mode = 0
@@ -144,6 +210,7 @@ offset_bottom = 96.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
 theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_duk68")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile2"]
 layout_mode = 0
@@ -168,6 +235,7 @@ offset_bottom = 96.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
 theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_snbld")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile3"]
 layout_mode = 0
@@ -192,6 +260,7 @@ offset_bottom = 96.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
 theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_myyfe")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile4"]
 layout_mode = 0
@@ -217,6 +286,7 @@ offset_bottom = 96.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
 theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_tl8s0")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile5"]
 layout_mode = 0
@@ -242,6 +312,7 @@ offset_bottom = 96.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
 theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_smapt")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile6"]
 layout_mode = 0
@@ -266,6 +337,7 @@ offset_bottom = 96.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
 theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_qolwm")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile7"]
 layout_mode = 0
@@ -291,6 +363,7 @@ offset_bottom = 96.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
 theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_n0rkd")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile8"]
 layout_mode = 0
@@ -316,6 +389,7 @@ offset_bottom = 96.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_c5pq5")
 theme_override_styles/hover = SubResource("StyleBoxTexture_cd8if")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ehmgy")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile9"]
 layout_mode = 0
@@ -329,16 +403,16 @@ mouse_filter = 2
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = 320.0
-offset_top = 160.0
-offset_right = 640.0
-offset_bottom = 424.0
-metadata/_edit_group_ = true
+offset_left = 80.0
+offset_top = 464.0
+offset_right = 400.0
+offset_bottom = 584.0
 
 [node name="Border" type="NinePatchRect" parent="GameOverPanel"]
 layout_mode = 0
-offset_right = 320.0
-offset_bottom = 264.0
+offset_left = -16.0
+offset_right = 336.0
+offset_bottom = 144.0
 texture = ExtResource("2_ljr84")
 patch_margin_left = 6
 patch_margin_top = 6
@@ -347,10 +421,10 @@ patch_margin_bottom = 6
 
 [node name="Background" type="NinePatchRect" parent="GameOverPanel"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 64.0
-offset_right = 312.0
-offset_bottom = 256.0
+offset_left = -8.0
+offset_top = 56.0
+offset_right = 328.0
+offset_bottom = 136.0
 texture = ExtResource("3_owssb")
 region_rect = Rect2(0, 0, 100, 100)
 patch_margin_left = 6
@@ -360,10 +434,9 @@ patch_margin_bottom = 6
 
 [node name="Title" type="Label" parent="GameOverPanel"]
 layout_mode = 0
-offset_left = 8.0
 offset_top = 8.0
-offset_right = 312.0
-offset_bottom = 56.0
+offset_right = 328.0
+offset_bottom = 48.0
 theme_override_fonts/font = ExtResource("4_pxbho")
 theme_override_font_sizes/font_size = 24
 text = "Game Over"
@@ -372,23 +445,23 @@ vertical_alignment = 1
 
 [node name="PlayAgainButton" type="Button" parent="GameOverPanel"]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 104.0
-offset_right = 288.0
-offset_bottom = 152.0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 152.0
+offset_bottom = 120.0
 theme_override_fonts/font = ExtResource("4_pxbho")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxTexture_rvv3b")
 theme_override_styles/hover = SubResource("StyleBoxTexture_khwco")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_hlof2")
-text = "Play Again"
+text = "Retry"
 
 [node name="ExitButton" type="Button" parent="GameOverPanel"]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 160.0
-offset_right = 288.0
-offset_bottom = 208.0
+offset_left = 168.0
+offset_top = 72.0
+offset_right = 312.0
+offset_bottom = 120.0
 theme_override_fonts/font = ExtResource("4_pxbho")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxTexture_rvv3b")

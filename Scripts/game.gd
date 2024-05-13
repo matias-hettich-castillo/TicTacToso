@@ -8,11 +8,11 @@ enum {
 var turn = TURN_X
 
 # Used to track the game state
-#enum GAME_STATE {
-	#PLAY,
-	#GAME_OVER
-#}
-#var gameState = GAME_STATE.PLAY
+enum GAME_STATE {
+	PLAY,
+	GAME_OVER
+}
+var gameState = GAME_STATE.PLAY
 
 # Array that stores the tiles played in the game
 var tiles_0 = ["","",""]
@@ -53,6 +53,23 @@ func get_player():
 	else:
 		return "O"
 
+func get_game_state():
+	if gameState == GAME_STATE.PLAY:
+		return 1
+	else:
+		return 0
+
+func disable_tiles(is_draw):
+	tile_1.set_disabled(is_draw)
+	tile_2.set_disabled(is_draw)
+	tile_3.set_disabled(is_draw)
+	tile_4.set_disabled(is_draw)
+	tile_5.set_disabled(is_draw)
+	tile_6.set_disabled(is_draw)
+	tile_7.set_disabled(is_draw)
+	tile_8.set_disabled(is_draw)
+	tile_9.set_disabled(is_draw)
+
 # Called to check the board for game over conditions
 func check_board(player):
 	print("begin check board")
@@ -84,41 +101,134 @@ func check_board(player):
 			draw_condition = false
 	
 	if draw_condition:
-		#gameState = GAME_STATE.GAME_OVER
+		gameState = GAME_STATE.GAME_OVER
 		update_status_bar("It's a draw!")
 		gameOverPanel.show()
+		
+		# lock tiles
+		disable_tiles(true)
+		
 		return false
 	
 	print("begin check columns")
 	# Check columns
 	if tiles_0[0] == player and tiles_1[0] == player and tiles_2[0] == player:
 		win_condition = player
+		tile_1.tile_highlight(true)
+		tile_4.tile_highlight(true)
+		tile_7.tile_highlight(true)
+		
+		tile_2.tile_highlight(false)
+		tile_3.tile_highlight(false)
+		tile_5.tile_highlight(false)
+		tile_6.tile_highlight(false)
+		tile_8.tile_highlight(false)
+		tile_9.tile_highlight(false)
+		
 	if tiles_0[1] == player and tiles_1[1] == player and tiles_2[1] == player:
 		win_condition = player
+		tile_2.tile_highlight(true)
+		tile_5.tile_highlight(true)
+		tile_8.tile_highlight(true)
+		
+		tile_1.tile_highlight(false)
+		tile_3.tile_highlight(false)
+		tile_4.tile_highlight(false)
+		tile_6.tile_highlight(false)
+		tile_7.tile_highlight(false)
+		tile_9.tile_highlight(false)
+		
 	if tiles_0[2] == player and tiles_1[2] == player and tiles_2[2] == player:
 		win_condition = player
+		tile_3.tile_highlight(true)
+		tile_6.tile_highlight(true)
+		tile_9.tile_highlight(true)
+		
+		tile_1.tile_highlight(false)
+		tile_2.tile_highlight(false)
+		tile_4.tile_highlight(false)
+		tile_5.tile_highlight(false)
+		tile_7.tile_highlight(false)
+		tile_8.tile_highlight(false)
 	
 	print("begin check rows")
 	# Check rows
 	if tiles_0[0] == player and tiles_0[1] == player and tiles_0[2] == player:
 		win_condition = player
+		tile_1.tile_highlight(true)
+		tile_2.tile_highlight(true)
+		tile_3.tile_highlight(true)
+		
+		tile_4.tile_highlight(false)
+		tile_5.tile_highlight(false)
+		tile_6.tile_highlight(false)
+		tile_7.tile_highlight(false)
+		tile_8.tile_highlight(false)
+		tile_9.tile_highlight(false)
+		
 	if tiles_1[0] == player and tiles_1[1] == player and tiles_1[2] == player:
 		win_condition = player
+		tile_4.tile_highlight(true)
+		tile_5.tile_highlight(true)
+		tile_6.tile_highlight(true)
+		
+		tile_1.tile_highlight(false)
+		tile_2.tile_highlight(false)
+		tile_3.tile_highlight(false)
+		tile_7.tile_highlight(false)
+		tile_8.tile_highlight(false)
+		tile_9.tile_highlight(false)
+		
 	if tiles_2[0] == player and tiles_2[1] == player and tiles_2[2] == player:
 		win_condition = player
+		tile_7.tile_highlight(true)
+		tile_8.tile_highlight(true)
+		tile_9.tile_highlight(true)
+		
+		tile_1.tile_highlight(false)
+		tile_2.tile_highlight(false)
+		tile_3.tile_highlight(false)
+		tile_4.tile_highlight(false)
+		tile_5.tile_highlight(false)
+		tile_6.tile_highlight(false)
 	
 	print("begin check cross")
 	# Check cross
 	if tiles_0[0] == player and tiles_1[1] == player and tiles_2[2] == player:
 		win_condition = player
+		tile_1.tile_highlight(true)
+		tile_5.tile_highlight(true)
+		tile_9.tile_highlight(true)
+		
+		tile_2.tile_highlight(false)
+		tile_3.tile_highlight(false)
+		tile_4.tile_highlight(false)
+		tile_6.tile_highlight(false)
+		tile_7.tile_highlight(false)
+		tile_8.tile_highlight(false)
+	
 	if tiles_0[2] == player and tiles_1[1] == player and tiles_2[0] == player:
 		win_condition = player
+		tile_3.tile_highlight(true)
+		tile_5.tile_highlight(true)
+		tile_7.tile_highlight(true)
+		
+		tile_1.tile_highlight(false)
+		tile_2.tile_highlight(false)
+		tile_4.tile_highlight(false)
+		tile_6.tile_highlight(false)
+		tile_8.tile_highlight(false)
+		tile_9.tile_highlight(false)
 	
 	print("check win condition")
 	if win_condition != "":
-		#gameState = GAME_STATE.GAME_OVER
+		gameState = GAME_STATE.GAME_OVER
 		update_status_bar("Player " + player + " wins!")
 		gameOverPanel.show()
+		
+		# Lock tiles
+		disable_tiles(false)
+		
 		return false
 		
 	return true
