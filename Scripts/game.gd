@@ -36,6 +36,10 @@ var tiles_2 = ["","",""]
 # Game over panel
 @onready var gameOverPanel = $GameOverPanel
 
+# Confetti emitters
+@onready var leftConfettiEmitter = $LeftConfettiEmitter
+@onready var rightConfettiEmitter = $RightConfettiEmitter
+
 func update_status_bar(text):
 	statusBar.text = text
 
@@ -70,6 +74,10 @@ func disable_tiles(is_draw):
 	tile_8.set_disabled(is_draw)
 	tile_9.set_disabled(is_draw)
 
+func shoot_confetti():
+	leftConfettiEmitter.emitting = true
+	rightConfettiEmitter.emitting = true
+
 # Called to check the board for game over conditions
 func check_board(player):
 	print("begin check board")
@@ -103,6 +111,7 @@ func check_board(player):
 	if draw_condition:
 		gameState = GAME_STATE.GAME_OVER
 		update_status_bar("It's a draw!")
+		shoot_confetti()
 		gameOverPanel.show()
 		
 		# lock tiles
@@ -225,6 +234,7 @@ func check_board(player):
 		gameState = GAME_STATE.GAME_OVER
 		update_status_bar("Player " + player + " wins!")
 		gameOverPanel.show()
+		shoot_confetti()
 		
 		# Lock tiles
 		disable_tiles(false)

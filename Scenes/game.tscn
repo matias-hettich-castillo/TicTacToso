@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bjkxc1cgheqyk"]
+[gd_scene load_steps=28 format=3 uid="uid://bjkxc1cgheqyk"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_bkmcd"]
 [ext_resource type="Texture2D" uid="uid://d3gv4cj56nwb2" path="res://Assets/Sprites/Panels/blue_panel.png" id="2_ljr84"]
@@ -115,6 +115,52 @@ texture_margin_left = 6.0
 texture_margin_top = 6.0
 texture_margin_right = 6.0
 texture_margin_bottom = 12.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_03xod"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(10, 10, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0.5, -1, 0)
+spread = 15.0
+flatness = 0.1
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+angular_velocity_min = 50.0
+angular_velocity_max = 60.0
+gravity = Vector3(0, 250, 0)
+linear_accel_max = 72.25
+damping_min = 100.0
+damping_max = 200.0
+scale_min = 10.0
+scale_max = 15.0
+color = Color(0.695503, 0.695503, 0.695503, 1)
+hue_variation_min = -0.25
+hue_variation_max = 0.25
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_343rd"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(10, 10, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(-0.5, -1, 0)
+spread = 15.0
+flatness = 0.1
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+angular_velocity_min = 50.0
+angular_velocity_max = 60.0
+gravity = Vector3(0, 250, 0)
+linear_accel_max = 72.25
+damping_min = 100.0
+damping_max = 200.0
+scale_min = 10.0
+scale_max = 15.0
+color = Color(0.695503, 0.695503, 0.695503, 1)
+hue_variation_min = -0.25
+hue_variation_max = 0.25
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_bkmcd")
@@ -468,6 +514,26 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_rvv3b")
 theme_override_styles/hover = SubResource("StyleBoxTexture_khwco")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_hlof2")
 text = "Exit"
+
+[node name="LeftConfettiEmitter" type="GPUParticles2D" parent="."]
+position = Vector2(0, 256)
+emitting = false
+amount = 100
+amount_ratio = 0.3
+process_material = SubResource("ParticleProcessMaterial_03xod")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+
+[node name="RightConfettiEmitter" type="GPUParticles2D" parent="."]
+position = Vector2(480, 256)
+emitting = false
+amount = 100
+amount_ratio = 0.3
+process_material = SubResource("ParticleProcessMaterial_343rd")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
 
 [connection signal="next_turn" from="GamePanel/Board/Tile" to="." method="_on_tile_next_turn"]
 [connection signal="pressed" from="GamePanel/Board/Tile/Button" to="GamePanel/Board/Tile" method="_on_button_pressed"]
