@@ -1,7 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://bjkxc1cgheqyk"]
+[gd_scene load_steps=31 format=3 uid="uid://bjkxc1cgheqyk"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_bkmcd"]
+[ext_resource type="Shader" path="res://Shaders/scroll.gdshader" id="2_7gevy"]
 [ext_resource type="Texture2D" uid="uid://d3gv4cj56nwb2" path="res://Assets/Sprites/Panels/blue_panel.png" id="2_ljr84"]
+[ext_resource type="Texture2D" uid="uid://cfbbo8ax6i0lx" path="res://Assets/Sprites/Backgrounds/background.png" id="3_2wlaw"]
 [ext_resource type="Texture2D" uid="uid://ct7v5v6m4l4ep" path="res://Assets/Sprites/Panels/grey_panel.png" id="3_owssb"]
 [ext_resource type="FontFile" uid="uid://lvokh6c5k3g0" path="res://Assets/Fonts/kenvector_future.ttf" id="4_pxbho"]
 [ext_resource type="Script" path="res://Scripts/tile.gd" id="5_kfkw1"]
@@ -10,6 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://c2plgo14g4xiy" path="res://Assets/Sprites/Buttons/Button_Pressed.png" id="7_cnuqu"]
 [ext_resource type="Texture2D" uid="uid://cebemt2abvxi3" path="res://Assets/Sprites/Tiles/grey_button07.png" id="8_g4r85"]
 [ext_resource type="Texture2D" uid="uid://bm4nieg8e7be6" path="res://Assets/Sprites/Tiles/blue_button06.png" id="8_h0rk3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p2xua"]
+shader = ExtResource("2_7gevy")
+shader_parameter/x_speed = 0.4
+shader_parameter/y_speed = 0.5
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c5pq5"]
 texture = ExtResource("8_h0rk3")
@@ -166,6 +173,32 @@ hue_variation_max = 0.25
 script = ExtResource("1_bkmcd")
 metadata/_edit_horizontal_guides_ = [32.0, 608.0]
 metadata/_edit_vertical_guides_ = [32.0, 448.0]
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 640.0
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.190838, 0.487184, 0.530208, 1)
+
+[node name="Texture" type="TextureRect" parent="Background"]
+material = SubResource("ShaderMaterial_p2xua")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2wlaw")
+stretch_mode = 1
 
 [node name="GamePanel" type="Control" parent="."]
 layout_mode = 3

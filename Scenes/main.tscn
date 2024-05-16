@@ -1,12 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpn81mx5c6eoc"]
+[gd_scene load_steps=14 format=3 uid="uid://bpn81mx5c6eoc"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_pg052"]
 [ext_resource type="Texture2D" uid="uid://d3gv4cj56nwb2" path="res://Assets/Sprites/Panels/blue_panel.png" id="2_00ccn"]
+[ext_resource type="Shader" path="res://Shaders/scroll.gdshader" id="2_opk7u"]
+[ext_resource type="Texture2D" uid="uid://cfbbo8ax6i0lx" path="res://Assets/Sprites/Backgrounds/background.png" id="3_o3oiy"]
 [ext_resource type="Texture2D" uid="uid://ct7v5v6m4l4ep" path="res://Assets/Sprites/Panels/grey_panel.png" id="3_prnld"]
 [ext_resource type="FontFile" uid="uid://lvokh6c5k3g0" path="res://Assets/Fonts/kenvector_future.ttf" id="4_cwrsn"]
 [ext_resource type="Texture2D" uid="uid://cra0hsa0s4nhb" path="res://Assets/Sprites/Buttons/Button_Normal.png" id="5_6gskq"]
 [ext_resource type="Texture2D" uid="uid://7bty81fujscm" path="res://Assets/Sprites/Buttons/Button_Hover.png" id="6_ujwet"]
 [ext_resource type="Texture2D" uid="uid://c2plgo14g4xiy" path="res://Assets/Sprites/Buttons/Button_Pressed.png" id="7_f8m60"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b0ym3"]
+shader = ExtResource("2_opk7u")
+shader_parameter/x_speed = 0.4
+shader_parameter/y_speed = 0.5
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvv3b"]
 texture = ExtResource("5_6gskq")
@@ -33,6 +40,32 @@ texture_margin_bottom = 12.0
 script = ExtResource("1_pg052")
 metadata/_edit_vertical_guides_ = [64.0, 416.0]
 metadata/_edit_horizontal_guides_ = [320.0, 160.0, 480.0]
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 640.0
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.190838, 0.487184, 0.530208, 1)
+
+[node name="Texture" type="TextureRect" parent="Background"]
+material = SubResource("ShaderMaterial_b0ym3")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_o3oiy")
+stretch_mode = 1
 
 [node name="Panel" type="Control" parent="."]
 layout_mode = 3

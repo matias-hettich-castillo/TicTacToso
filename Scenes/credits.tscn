@@ -1,12 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2ypoti187s5b"]
+[gd_scene load_steps=14 format=3 uid="uid://d2ypoti187s5b"]
 
 [ext_resource type="Script" path="res://Scripts/credits.gd" id="1_40j1j"]
 [ext_resource type="Texture2D" uid="uid://d3gv4cj56nwb2" path="res://Assets/Sprites/Panels/blue_panel.png" id="1_p8u3j"]
 [ext_resource type="Texture2D" uid="uid://ct7v5v6m4l4ep" path="res://Assets/Sprites/Panels/grey_panel.png" id="2_biu5n"]
+[ext_resource type="Shader" path="res://Shaders/scroll.gdshader" id="2_m5hdm"]
+[ext_resource type="Texture2D" uid="uid://cfbbo8ax6i0lx" path="res://Assets/Sprites/Backgrounds/background.png" id="3_fvyea"]
 [ext_resource type="FontFile" uid="uid://lvokh6c5k3g0" path="res://Assets/Fonts/kenvector_future.ttf" id="3_u7f6y"]
 [ext_resource type="Texture2D" uid="uid://cra0hsa0s4nhb" path="res://Assets/Sprites/Buttons/Button_Normal.png" id="4_flqqe"]
 [ext_resource type="Texture2D" uid="uid://7bty81fujscm" path="res://Assets/Sprites/Buttons/Button_Hover.png" id="5_xsem8"]
 [ext_resource type="Texture2D" uid="uid://c2plgo14g4xiy" path="res://Assets/Sprites/Buttons/Button_Pressed.png" id="6_mgnxh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bftuk"]
+shader = ExtResource("2_m5hdm")
+shader_parameter/x_speed = 0.4
+shader_parameter/y_speed = 0.5
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvv3b"]
 texture = ExtResource("4_flqqe")
@@ -31,6 +38,32 @@ texture_margin_bottom = 12.0
 
 [node name="Credits" type="Node2D"]
 script = ExtResource("1_40j1j")
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 640.0
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.190838, 0.487184, 0.530208, 1)
+
+[node name="Texture" type="TextureRect" parent="Background"]
+material = SubResource("ShaderMaterial_bftuk")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fvyea")
+stretch_mode = 1
 
 [node name="Panel" type="Control" parent="."]
 layout_mode = 3
