@@ -274,10 +274,10 @@ func _on_play_again_button_pressed():
 
 
 func _on_play_again_button_button_down():
-	soundEffectPlayer.stream = preload("res://Assets/SFX/JDSherbert - Ultimate UI SFX Pack - Cursor - 5.ogg")
+	soundEffectPlayer.stream = preload("res://Assets/SFX/JDSherbert - Ultimate UI SFX Pack - Cursor - 3.ogg")
 	soundEffectPlayer.play()
 
 
 func _on_exit_button_button_down():
-	soundEffectPlayer.stream = preload("res://Assets/SFX/JDSherbert - Ultimate UI SFX Pack - Cursor - 5.ogg")
+	soundEffectPlayer.stream = preload("res://Assets/SFX/JDSherbert - Ultimate UI SFX Pack - Cursor - 3.ogg")
 	soundEffectPlayer.play()
