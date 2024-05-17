@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b1d0rgq47318e"
+path="res://.godot/imported/JDSherbert - Minigame Music Pack - A Minor Distraction.ogg-4ebaa303ff02902491745af284458fb9.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/JDSherbert - Minigame Music Pack - A Minor Distraction.ogg"
+dest_files=["res://.godot/imported/JDSherbert - Minigame Music Pack - A Minor Distraction.ogg-4ebaa303ff02902491745af284458fb9.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

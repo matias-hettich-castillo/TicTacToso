@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bjkxc1cgheqyk"]
+[gd_scene load_steps=32 format=3 uid="uid://bjkxc1cgheqyk"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_bkmcd"]
 [ext_resource type="Shader" path="res://Shaders/scroll.gdshader" id="2_7gevy"]
@@ -7,11 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://ct7v5v6m4l4ep" path="res://Assets/Sprites/Panels/grey_panel.png" id="3_owssb"]
 [ext_resource type="FontFile" uid="uid://lvokh6c5k3g0" path="res://Assets/Fonts/kenvector_future.ttf" id="4_pxbho"]
 [ext_resource type="Script" path="res://Scripts/tile.gd" id="5_kfkw1"]
-[ext_resource type="Texture2D" uid="uid://cra0hsa0s4nhb" path="res://Assets/Sprites/Buttons/Button_Normal.png" id="5_oxbnr"]
-[ext_resource type="Texture2D" uid="uid://7bty81fujscm" path="res://Assets/Sprites/Buttons/Button_Hover.png" id="6_xs8po"]
-[ext_resource type="Texture2D" uid="uid://c2plgo14g4xiy" path="res://Assets/Sprites/Buttons/Button_Pressed.png" id="7_cnuqu"]
+[ext_resource type="Texture2D" uid="uid://cra0hsa0s4nhb" path="res://Assets/Sprites/Buttons/blue_button07.png" id="5_oxbnr"]
+[ext_resource type="Texture2D" uid="uid://7bty81fujscm" path="res://Assets/Sprites/Buttons/yellow_button07.png" id="6_xs8po"]
+[ext_resource type="Texture2D" uid="uid://c2plgo14g4xiy" path="res://Assets/Sprites/Buttons/yellow_button08.png" id="7_cnuqu"]
 [ext_resource type="Texture2D" uid="uid://cebemt2abvxi3" path="res://Assets/Sprites/Tiles/grey_button07.png" id="8_g4r85"]
 [ext_resource type="Texture2D" uid="uid://bm4nieg8e7be6" path="res://Assets/Sprites/Tiles/blue_button06.png" id="8_h0rk3"]
+[ext_resource type="AudioStream" uid="uid://q6txcmn36a14" path="res://Assets/Music/JDSherbert - Minigame Music Pack - Refreshing Dawn.ogg" id="13_r05b2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p2xua"]
 shader = ExtResource("2_7gevy")
@@ -174,6 +175,13 @@ script = ExtResource("1_bkmcd")
 metadata/_edit_horizontal_guides_ = [32.0, 608.0]
 metadata/_edit_vertical_guides_ = [32.0, 448.0]
 
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_r05b2")
+volume_db = -15.0
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
 [node name="Background" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -190,15 +198,70 @@ grow_vertical = 2
 color = Color(0.190838, 0.487184, 0.530208, 1)
 
 [node name="Texture" type="TextureRect" parent="Background"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
 material = SubResource("ShaderMaterial_p2xua")
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
 layout_mode = 1
 anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+auto_translate = true
+localize_numeral_system = true
+tooltip_text = ""
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 0
+mouse_filter = 1
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+theme = null
+theme_type_variation = &""
 texture = ExtResource("3_2wlaw")
+expand_mode = 0
 stretch_mode = 1
+flip_h = false
+flip_v = false
+script = null
 
 [node name="GamePanel" type="Control" parent="."]
 layout_mode = 3
@@ -267,12 +330,70 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_eh2p6")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
 layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 88.0
 offset_bottom = 80.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+auto_translate = true
+localize_numeral_system = true
+tooltip_text = ""
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 0
 mouse_filter = 2
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+theme = null
+theme_type_variation = &""
+texture = null
+expand_mode = 0
+stretch_mode = 0
+flip_h = false
+flip_v = false
+script = null
 
 [node name="Tile2" type="Control" parent="GamePanel/Board"]
 anchors_preset = 0
@@ -292,12 +413,70 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_duk68")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile2"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
 layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 88.0
 offset_bottom = 80.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+auto_translate = true
+localize_numeral_system = true
+tooltip_text = ""
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 0
 mouse_filter = 2
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+theme = null
+theme_type_variation = &""
+texture = null
+expand_mode = 0
+stretch_mode = 0
+flip_h = false
+flip_v = false
+script = null
 
 [node name="Tile3" type="Control" parent="GamePanel/Board"]
 anchors_preset = 0
@@ -317,12 +496,70 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_snbld")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile3"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
 layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 88.0
 offset_bottom = 80.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+auto_translate = true
+localize_numeral_system = true
+tooltip_text = ""
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 0
 mouse_filter = 2
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+theme = null
+theme_type_variation = &""
+texture = null
+expand_mode = 0
+stretch_mode = 0
+flip_h = false
+flip_v = false
+script = null
 
 [node name="Tile4" type="Control" parent="GamePanel/Board"]
 anchors_preset = 0
@@ -342,12 +579,70 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_myyfe")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile4"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
 layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 88.0
 offset_bottom = 80.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+auto_translate = true
+localize_numeral_system = true
+tooltip_text = ""
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 0
 mouse_filter = 2
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+theme = null
+theme_type_variation = &""
+texture = null
+expand_mode = 0
+stretch_mode = 0
+flip_h = false
+flip_v = false
+script = null
 
 [node name="Tile5" type="Control" parent="GamePanel/Board"]
 anchors_preset = 0
@@ -368,12 +663,70 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_tl8s0")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile5"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
 layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 88.0
 offset_bottom = 80.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+auto_translate = true
+localize_numeral_system = true
+tooltip_text = ""
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 0
 mouse_filter = 2
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+theme = null
+theme_type_variation = &""
+texture = null
+expand_mode = 0
+stretch_mode = 0
+flip_h = false
+flip_v = false
+script = null
 
 [node name="Tile6" type="Control" parent="GamePanel/Board"]
 anchors_preset = 0
@@ -394,12 +747,70 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_smapt")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile6"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
 layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 88.0
 offset_bottom = 80.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+auto_translate = true
+localize_numeral_system = true
+tooltip_text = ""
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 0
 mouse_filter = 2
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+theme = null
+theme_type_variation = &""
+texture = null
+expand_mode = 0
+stretch_mode = 0
+flip_h = false
+flip_v = false
+script = null
 
 [node name="Tile7" type="Control" parent="GamePanel/Board"]
 anchors_preset = 0
@@ -419,12 +830,70 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_qolwm")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile7"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
 layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 88.0
 offset_bottom = 80.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+auto_translate = true
+localize_numeral_system = true
+tooltip_text = ""
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 0
 mouse_filter = 2
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+theme = null
+theme_type_variation = &""
+texture = null
+expand_mode = 0
+stretch_mode = 0
+flip_h = false
+flip_v = false
+script = null
 
 [node name="Tile8" type="Control" parent="GamePanel/Board"]
 anchors_preset = 0
@@ -445,12 +914,70 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_n0rkd")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile8"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
 layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 88.0
 offset_bottom = 80.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+auto_translate = true
+localize_numeral_system = true
+tooltip_text = ""
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 0
 mouse_filter = 2
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+theme = null
+theme_type_variation = &""
+texture = null
+expand_mode = 0
+stretch_mode = 0
+flip_h = false
+flip_v = false
+script = null
 
 [node name="Tile9" type="Control" parent="GamePanel/Board"]
 anchors_preset = 0
@@ -471,12 +998,70 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_y00hj")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_ehmgy")
 
 [node name="Icon" type="TextureRect" parent="GamePanel/Board/Tile9"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
 layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 88.0
 offset_bottom = 80.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+auto_translate = true
+localize_numeral_system = true
+tooltip_text = ""
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 0
 mouse_filter = 2
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+theme = null
+theme_type_variation = &""
+texture = null
+expand_mode = 0
+stretch_mode = 0
+flip_h = false
+flip_v = false
+script = null
 
 [node name="GameOverPanel" type="Control" parent="."]
 visible = false
@@ -558,8 +1143,28 @@ lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
 
+[node name="LeftConfettiEmitter2" type="GPUParticles2D" parent="."]
+position = Vector2(0, 384)
+emitting = false
+amount = 100
+amount_ratio = 0.3
+process_material = SubResource("ParticleProcessMaterial_03xod")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+
 [node name="RightConfettiEmitter" type="GPUParticles2D" parent="."]
 position = Vector2(480, 256)
+emitting = false
+amount = 100
+amount_ratio = 0.3
+process_material = SubResource("ParticleProcessMaterial_343rd")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+
+[node name="RightConfettiEmitter2" type="GPUParticles2D" parent="."]
+position = Vector2(480, 384)
 emitting = false
 amount = 100
 amount_ratio = 0.3
@@ -586,5 +1191,7 @@ explosiveness = 1.0
 [connection signal="pressed" from="GamePanel/Board/Tile8/Button" to="GamePanel/Board/Tile8" method="_on_button_pressed"]
 [connection signal="next_turn" from="GamePanel/Board/Tile9" to="." method="_on_tile_next_turn"]
 [connection signal="pressed" from="GamePanel/Board/Tile9/Button" to="GamePanel/Board/Tile9" method="_on_button_pressed"]
+[connection signal="button_down" from="GameOverPanel/PlayAgainButton" to="." method="_on_play_again_button_button_down"]
 [connection signal="pressed" from="GameOverPanel/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="button_down" from="GameOverPanel/ExitButton" to="." method="_on_exit_button_button_down"]
 [connection signal="pressed" from="GameOverPanel/ExitButton" to="." method="_on_exit_button_pressed"]

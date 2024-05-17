@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dxf7x7j2jiqys"
+path="res://.godot/imported/JDSherbert - Minigame Music Pack - Smooth Driving.ogg-a8eb39ab3a8538bb2bc7ae2c16467151.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/JDSherbert - Minigame Music Pack - Smooth Driving.ogg"
+dest_files=["res://.godot/imported/JDSherbert - Minigame Music Pack - Smooth Driving.ogg-a8eb39ab3a8538bb2bc7ae2c16467151.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

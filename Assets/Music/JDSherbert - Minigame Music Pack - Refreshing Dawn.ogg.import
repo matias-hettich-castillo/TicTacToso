@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://q6txcmn36a14"
+path="res://.godot/imported/JDSherbert - Minigame Music Pack - Refreshing Dawn.ogg-b34a0b53426d45b3997260d6c976412d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/JDSherbert - Minigame Music Pack - Refreshing Dawn.ogg"
+dest_files=["res://.godot/imported/JDSherbert - Minigame Music Pack - Refreshing Dawn.ogg-b34a0b53426d45b3997260d6c976412d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

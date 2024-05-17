@@ -14,6 +14,12 @@ var tile_blank = true
 # Tile button
 @onready var button = $Button
 
+# Sound Effect
+@onready var soundEffectPlayer = $"../../../SFXPlayer"
+
+func _ready():
+	button.tooltip_text = "Place a token by clicking here."
+
 func set_disabled(is_draw):
 	if is_draw:
 		var icon_texture
@@ -45,6 +51,10 @@ func tile_highlight(win):
 # Called when the player clicks on this tile
 func _on_button_pressed():
 	if tile_blank:
+		# Play sound effect
+		soundEffectPlayer.stream = preload("res://Assets/SFX/JDSherbert - Ultimate UI SFX Pack - Select - 1.ogg")
+		soundEffectPlayer.play()
+		
 		print("Tile blank")
 		
 		# Get wich player's turn is

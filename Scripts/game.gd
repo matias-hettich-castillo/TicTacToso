@@ -1,5 +1,7 @@
 extends Node2D
 
+
+
 # Used to track the player's turn
 enum {
 	TURN_X,
@@ -39,6 +41,15 @@ var tiles_2 = ["","",""]
 # Confetti emitters
 @onready var leftConfettiEmitter = $LeftConfettiEmitter
 @onready var rightConfettiEmitter = $RightConfettiEmitter
+
+# Background music
+@onready var backgroundMusic = $BackgroundMusic
+
+# Sound effect player
+@onready var soundEffectPlayer = $SFXPlayer
+
+func _ready():
+	backgroundMusic.play()
 
 func update_status_bar(text):
 	statusBar.text = text
@@ -113,6 +124,9 @@ func check_board(player):
 		update_status_bar("It's a draw!")
 		shoot_confetti()
 		gameOverPanel.show()
+		backgroundMusic.stop()
+		backgroundMusic.stream = preload("res://Assets/Music/JDSherbert - Minigame Music Pack - Beach Vibes.ogg")
+		backgroundMusic.play()
 		
 		# lock tiles
 		disable_tiles(true)
@@ -235,6 +249,9 @@ func check_board(player):
 		update_status_bar("Player " + player + " wins!")
 		gameOverPanel.show()
 		shoot_confetti()
+		backgroundMusic.stop()
+		backgroundMusic.stream = preload("res://Assets/Music/JDSherbert - Minigame Music Pack - Blackjack.ogg")
+		backgroundMusic.play()
 		
 		# Lock tiles
 		disable_tiles(false)
@@ -254,3 +271,13 @@ func _on_tile_next_turn():
 # Reloads the game scene
 func _on_play_again_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
+
+
+func _on_play_again_button_button_down():
+	soundEffectPlayer.stream = preload("res://Assets/SFX/JDSherbert - Ultimate UI SFX Pack - Cursor - 5.ogg")
+	soundEffectPlayer.play()
+
+
+func _on_exit_button_button_down():
+	soundEffectPlayer.stream = preload("res://Assets/SFX/JDSherbert - Ultimate UI SFX Pack - Cursor - 5.ogg")
+	soundEffectPlayer.play()
