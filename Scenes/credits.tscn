@@ -116,22 +116,40 @@ text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CreditsLabel" type="Label" parent="Panel"]
+[node name="CreditsLabel" type="RichTextLabel" parent="Panel"]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 64.0
+offset_top = 96.0
 offset_right = 392.0
-offset_bottom = 480.0
-theme_override_colors/font_color = Color(0.498039, 0.498039, 0.498039, 1)
-theme_override_fonts/font = ExtResource("3_u7f6y")
-theme_override_font_sizes/font_size = 24
-text = "Tic-Tac-Toe by
-Matias Hettich
+offset_bottom = 448.0
+theme_override_fonts/normal_font = ExtResource("3_u7f6y")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][color=aabde1]Tic-Tac-Toe
+clone made by
+[color=617daf]Matias Hettich[/color]
 
-GUI textures by
-Kenney"
-horizontal_alignment = 1
-vertical_alignment = 1
+
+Fonts made by
+[color=617daf]Daniel Linssen[/color]
+
+[color=8fa4cd]managore.itch.io[/color]
+
+
+GUI texture pack
+made by [color=617daf]Kenney[/color]
+
+[color=8fa4cd]www.kenney.nl[/color]
+
+
+Music and sfx made
+by [color=617daf]JD Sherbert[/color]
+
+[color=8fa4cd]jdsherbert.itch.io[/color]
+
+
+
+Thank you for playing :)"
 
 [node name="BackButton" type="Button" parent="Panel"]
 layout_mode = 0
@@ -139,6 +157,7 @@ offset_left = 256.0
 offset_top = 496.0
 offset_right = 392.0
 offset_bottom = 544.0
+tooltip_text = "Go back to the main menu."
 theme_override_fonts/font = ExtResource("3_u7f6y")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxTexture_rvv3b")
