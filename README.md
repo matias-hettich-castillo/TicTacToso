@@ -1,4 +1,4 @@
-# Tic-Tac-Toe Test
+# Tic-Tac-Toe Test Minigame
 
 This project was made in Godot as a part of me learning how to mess around with the engine. This is the third project I finish in this modality, the first one being a Pong clone, and the second one being a Break-Out clone. Hope you enjoy it.
 
