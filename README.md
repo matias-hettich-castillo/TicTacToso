@@ -2,11 +2,11 @@
 
 This project was made in Godot as a part of me learning how to mess around with the engine. This is the third project I finish in this modality, the first one being a Pong clone, and the second one being a Break-Out clone. Hope you enjoy it.
 
-[<p align="center">
+<p align="center">
   <img src="https://github.com/matias-hettich-castillo/TicTacToso/assets/7623785/fadd0d07-425e-4a5a-8503-361b3ea806bd" width="250" />
   <img src="https://github.com/matias-hettich-castillo/TicTacToso/assets/7623785/016618c1-b5b0-41f4-b395-9eb9e40d922b" width="250" />
   <img src="https://github.com/matias-hettich-castillo/TicTacToso/assets/7623785/e4358325-cda7-4e0d-a84a-0d2874870580" width="250" />
-</p>](https://jdsherbert.itch.io/ultimate-ui-sfx-pack)
+</p>
 
 ## Controls:
 
