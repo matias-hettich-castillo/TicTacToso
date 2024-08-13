@@ -127,7 +127,7 @@ func set_cpu_move_tile_value():
 		
 		# Emit signal to inform turn change and make CPU move
 		print("emit signal and change turn")
-		emit_signal("next_turn")
+		#emit_signal("next_turn")
 
 # Called when the tile icon node is highlighted with the win or lose colors
 func tile_highlight(win):

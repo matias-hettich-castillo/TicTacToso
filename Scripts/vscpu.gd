@@ -76,6 +76,9 @@ func next_turn():
 		# Set the turn to the O player
 		turn = TURN_O
 		make_cpu_move()
+		
+		# Pass the turn to the player
+		next_turn()
 	
 	else:
 		print("Turn O -> Turn X")
@@ -99,7 +102,10 @@ func make_cpu_move():
 	tiles_2[0] = tile_7.get_tile_value()
 	tiles_2[1] = tile_8.get_tile_value()
 	tiles_2[2] = tile_9.get_tile_value()
-	print("Got the tiles arrays")
+	print("Got the tiles arrays:")
+	print(str(tiles_0))
+	print(str(tiles_1))
+	print(str(tiles_2))
 	# Enter cpu move loop
 	var cpu_move_loop = true
 	var rnd = RandomNumberGenerator.new()
@@ -149,9 +155,6 @@ func make_cpu_move():
 			
 			# Exit the cpu move loop
 			cpu_move_loop = false
-	
-	# Pass the turn to the player
-	next_turn()
 
 func make_move_on(line, column):
 	print("Start make_move_on function")
@@ -159,26 +162,35 @@ func make_move_on(line, column):
 		0:
 			match column:
 				0:
+					print("make move on tile 1")
 					tile_1.set_cpu_move_tile_value()
 				1:
+					print("make move on tile 2")
 					tile_2.set_cpu_move_tile_value()
 				2:
+					print("make move on tile 3")
 					tile_3.set_cpu_move_tile_value()
 		1:
 			match column:
 				0:
+					print("make move on tile 4")
 					tile_4.set_cpu_move_tile_value()
 				1:
+					print("make move on tile 5")
 					tile_5.set_cpu_move_tile_value()
 				2:
+					print("make move on tile 6")
 					tile_6.set_cpu_move_tile_value()
 		2:
 			match column:
 				0:
+					print("make move on tile 7")
 					tile_7.set_cpu_move_tile_value()
 				1:
+					print("make move on tile 8")
 					tile_8.set_cpu_move_tile_value()
 				2:
+					print("make move on tile 9")
 					tile_9.set_cpu_move_tile_value()
 
 # Called to get the current turn
@@ -445,4 +457,4 @@ func _on_play_again_button_button_down():
 # Called when the play again button is pressed
 func _on_play_again_button_pressed():
 	# Load the Game scene (Works like a scene reload)
-	get_tree().change_scene_to_file("res://Scenes/game.tscn")
+	get_tree().change_scene_to_file("res://Scenes/vscpu.tscn")
