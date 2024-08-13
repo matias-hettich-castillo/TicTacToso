@@ -70,9 +70,8 @@ func _on_button_pressed():
 				# Update the status bar turn display
 				$"../../..".update_status_bar("Player's X turn")
 			
-			# Emit signal to inform turn change and make CPU move
+			# Emit signal to inform turn change
 			emit_signal("next_turn")
-		
 
 # Called when the tile button node is disabled
 func set_disabled(is_draw):
@@ -99,35 +98,6 @@ func set_disabled(is_draw):
 # Returns the tile symbol value
 func get_tile_value():
 	return tile_value
-
-# Sets the tile value for the cpu move
-func set_cpu_move_tile_value():
-	print("start set_cpu_move_tile_value function")
-	# Variable that stores the icon texture to show later
-	var icon_texture
-	
-	# Set the tile value to the O symbol
-	tile_value = "O"
-
-	# Preload the circle icon
-	icon_texture = preload("res://Assets/Sprites/Tiles/blue_circle.png")
-
-	# Set icon node texture
-	icon.texture = icon_texture
-
-	# Set this tile blank variable to false
-	tile_blank = false
-	
-	# Check if there wasn't a win or draw conditions
-	print("Check board for win conditions")
-	if $"../../..".check_board("O"):
-		print("Theres no win conditions")
-		# Update the status bar turn display
-		$"../../..".update_status_bar("Player's X turn")
-		
-		# Emit signal to inform turn change and make CPU move
-		print("emit signal and change turn")
-		emit_signal("next_turn")
 
 # Called when the tile icon node is highlighted with the win or lose colors
 func tile_highlight(win):

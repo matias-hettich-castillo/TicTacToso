@@ -154,6 +154,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_rvv3b")
 theme_override_styles/hover = SubResource("StyleBoxTexture_khwco")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_hlof2")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_ky0xv")
+disabled = true
 text = "VS CPU"
 
 [node name="CreditsButton" type="Button" parent="Panel"]
@@ -172,7 +173,5 @@ text = "Credits"
 
 [connection signal="button_down" from="Panel/StartGameButton" to="." method="_on_start_game_button_button_down"]
 [connection signal="pressed" from="Panel/StartGameButton" to="." method="_on_start_game_button_pressed"]
-[connection signal="button_down" from="Panel/StartCPUButton" to="." method="_on_start_cpu_button_button_down"]
-[connection signal="pressed" from="Panel/StartCPUButton" to="." method="_on_start_cpu_button_pressed"]
 [connection signal="button_down" from="Panel/CreditsButton" to="." method="_on_credits_button_button_down"]
 [connection signal="pressed" from="Panel/CreditsButton" to="." method="_on_credits_button_pressed"]

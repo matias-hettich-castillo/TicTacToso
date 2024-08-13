@@ -36,16 +36,3 @@ func _on_credits_button_button_down():
 func _on_credits_button_pressed():
 	# Load the Credits scene
 	get_tree().change_scene_to_file("res://Scenes/credits.tscn")
-
-
-func _on_start_cpu_button_button_down():
-	# Preload the button press sound effect
-	soundEffectPlayer.stream = preload("res://Assets/SFX/JDSherbert - Ultimate UI SFX Pack - Cursor - 3.ogg")
-	
-	# Play the button press sound effect
-	soundEffectPlayer.play()
-
-
-func _on_start_cpu_button_pressed():
-	# Load the Game scene
-	get_tree().change_scene_to_file("res://Scenes/vscpu.tscn")
