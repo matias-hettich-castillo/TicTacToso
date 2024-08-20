@@ -1,6 +1,5 @@
 extends Node2D
 
-
 # Enum for the games turn names
 enum {
 	TURN_X,
@@ -61,10 +60,6 @@ var tiles_2 = ["","",""]
 func _ready():
 	# Play the background music
 	backgroundMusic.play()
-	
-# For muting development
-func _process(_delta):
-	backgroundMusic.stop()
 
 # Called to update the status bar text
 func update_status_bar(text):
@@ -73,25 +68,23 @@ func update_status_bar(text):
 
 # Called to change the current player's turn
 func next_turn():
-	print("Starting next_turn function")
-	# Check the current turn value
+	# Check the current turn value (X: Player, O: CPU)
 	if turn == TURN_X:
-		print("Turn X -> Turn O")
 		# Set the turn to the O player
 		turn = TURN_O
+		
+		# Do the CPU's move
 		make_cpu_move()
 		
 		# Pass the turn to the player
 		next_turn()
 	
 	else:
-		print("Turn O -> Turn X")
-		# Set the turn to the X player
+		# Set the turn to the player
 		turn = TURN_X
 
 # Called to make the cpu make its move
 func make_cpu_move():
-	print("make_cpu_move function start")
 	# Update the first row of tiles array
 	tiles_0[0] = tile_1.get_tile_value()
 	tiles_0[1] = tile_2.get_tile_value()
@@ -106,95 +99,104 @@ func make_cpu_move():
 	tiles_2[0] = tile_7.get_tile_value()
 	tiles_2[1] = tile_8.get_tile_value()
 	tiles_2[2] = tile_9.get_tile_value()
-	print("Got the tiles arrays:")
-	print(str(tiles_0))
-	print(str(tiles_1))
-	print(str(tiles_2))
-	# Enter cpu move loop
-	var cpu_move_loop = true
-	var rnd = RandomNumberGenerator.new()
-	var cpu_move_line = -1
-	var cpu_move_column = -1
-	print("initialized cpu moves variables")
 	
+	# Enter cpu move loop
+	# Variable to check if the loop has ended
+	var cpu_move_loop = true
+	
+	# Create a random number generator
+	var rnd = RandomNumberGenerator.new()
+	
+	# Variable that stores the line where the CPU is making its move
+	var cpu_move_line = -1
+	
+	# Variable that stores the column where the CPU is making its move
+	var cpu_move_column = -1
+	
+	# While loop for the CPU to find an empty space to make its move
 	while cpu_move_loop:
-		print("While loop")
-		# Generate the cpu move
-		print("Generate cpu random move")
+		# Generate the cpu move line and column
 		cpu_move_line = rnd.randi_range(0,2)
 		cpu_move_column = rnd.randi_range(0,2)
-		print("cpu_ml: " + str(cpu_move_line) + ", cpu_mc: " + str(cpu_move_column))
-		# Check if theres a free space on the cpu move
-		# Check first line
+		
+		# Check if theres a free space on the selected line and column
+		# Check in case is first line
 		if cpu_move_line == 0:
+			# Check if there's an empty space in the first row's column
 			if tiles_0[cpu_move_column] == "":
-				print("Found free space on (" + str(cpu_move_line) + ", " + str(cpu_move_column) + ")")
-				# Found a free space on the first line
+				
+				# Found a free space here
 				make_move_on(cpu_move_line, cpu_move_column)
 				
-				# Exit the cpu move loop
+				# Exit the CPU move loop
 				cpu_move_loop = false
 		
-		# Check second line
+		# Check in case is second line
 		elif cpu_move_line == 1:
+			# Check if there's an empty space in the second row's column
 			if tiles_1[cpu_move_column] == "":
-				# Found a free space on the second line
+				# Found a free space here
 				make_move_on(cpu_move_line, cpu_move_column)
 				
-				# Exit the cpu move loop
+				# Exit the CPU move loop
 				cpu_move_loop = false
 		
-		# Check third line
+		# Check in case is third line
 		elif cpu_move_line == 2:
+			# Check if there's an empty space in the third row's column
 			if tiles_2[cpu_move_column] == "":
-				# Found a free space on the third line
+				# Found a free space here
 				make_move_on(cpu_move_line, cpu_move_column)
 				
-				# Exit the cpu move loop
+				# Exit the CPU move loop
 				cpu_move_loop = false
 			
 		else:
 			# An error ocurred searching for a free space
 			print("ERROR WITH CPU MOVE LINE")
 			
-			# Exit the cpu move loop
+			# Exit the CPU move loop
 			cpu_move_loop = false
 
+# Called when the CPU finds an empty space and it's going to make its move
 func make_move_on(line, column):
-	print("Start make_move_on function")
+	# Search for the selected line
 	match line:
 		0:
+			# Search for the selected column
 			match column:
 				0:
-					print("make move on tile 1")
+					# CPU gonna make a move on tile 1
 					tile_1.set_cpu_move_tile_value()
 				1:
-					print("make move on tile 2")
+					# CPU gonna make a move on tile 2
 					tile_2.set_cpu_move_tile_value()
 				2:
-					print("make move on tile 3")
+					# CPU gonna make a move on tile 3
 					tile_3.set_cpu_move_tile_value()
 		1:
+			# Search for the selected column
 			match column:
 				0:
-					print("make move on tile 4")
+					# CPU gonna make a move on tile 4
 					tile_4.set_cpu_move_tile_value()
 				1:
-					print("make move on tile 5")
+					# CPU gonna make a move on tile 5
 					tile_5.set_cpu_move_tile_value()
 				2:
-					print("make move on tile 6")
+					# CPU gonna make a move on tile 6
 					tile_6.set_cpu_move_tile_value()
 		2:
+			# Search for the selected column
 			match column:
 				0:
-					print("make move on tile 7")
+					# CPU gonna make a move on tile 7
 					tile_7.set_cpu_move_tile_value()
 				1:
-					print("make move on tile 8")
+					# CPU gonna make a move on tile 8
 					tile_8.set_cpu_move_tile_value()
 				2:
-					print("make move on tile 9")
+					# CPU gonna make a move on tile 9
 					tile_9.set_cpu_move_tile_value()
 
 # Called to get the current turn
@@ -272,16 +274,18 @@ func check_board(player):
 			# Set the draw condition false if there was a blank tile somewhere
 			draw_condition = false
 	
-	
-	
 	# Section that checks if the winning conditions where met in any row
 	# Check win condition in the first row
 	if tiles_0[0] == player and tiles_0[1] == player and tiles_0[2] == player:
+		# Set the win condition player symbol
 		win_condition = player
+		
+		# Highlight the wining tiles
 		tile_1.tile_highlight(true)
 		tile_2.tile_highlight(true)
 		tile_3.tile_highlight(true)
 		
+		# Set the losing tiles opaque
 		tile_4.tile_highlight(false)
 		tile_5.tile_highlight(false)
 		tile_6.tile_highlight(false)
@@ -291,11 +295,15 @@ func check_board(player):
 	
 	# Check win condition in the second row
 	if tiles_1[0] == player and tiles_1[1] == player and tiles_1[2] == player:
+		# Set the win condition player symbol
 		win_condition = player
+		
+		# Highlight the wining tiles
 		tile_4.tile_highlight(true)
 		tile_5.tile_highlight(true)
 		tile_6.tile_highlight(true)
 		
+		# Set the losing tiles opaque
 		tile_1.tile_highlight(false)
 		tile_2.tile_highlight(false)
 		tile_3.tile_highlight(false)
@@ -305,11 +313,15 @@ func check_board(player):
 	
 	# Check win condition in the third row
 	if tiles_2[0] == player and tiles_2[1] == player and tiles_2[2] == player:
+		# Set the win condition player symbol
 		win_condition = player
+		
+		# Highlight the wining tiles
 		tile_7.tile_highlight(true)
 		tile_8.tile_highlight(true)
 		tile_9.tile_highlight(true)
 		
+		# Set the losing tiles opaque
 		tile_1.tile_highlight(false)
 		tile_2.tile_highlight(false)
 		tile_3.tile_highlight(false)
@@ -320,11 +332,15 @@ func check_board(player):
 	# Section that checks if the winning conditions where met in any column
 	# Check win condition in the first column
 	if tiles_0[0] == player and tiles_1[0] == player and tiles_2[0] == player:
+		# Set the win condition player symbol
 		win_condition = player
+		
+		# Highlight the wining tiles
 		tile_1.tile_highlight(true)
 		tile_4.tile_highlight(true)
 		tile_7.tile_highlight(true)
 		
+		# Set the losing tiles opaque
 		tile_2.tile_highlight(false)
 		tile_3.tile_highlight(false)
 		tile_5.tile_highlight(false)
@@ -334,11 +350,15 @@ func check_board(player):
 	
 	# Check win condition in the second column
 	if tiles_0[1] == player and tiles_1[1] == player and tiles_2[1] == player:
+		# Set the win condition player symbol
 		win_condition = player
+		
+		# Highlight the wining tiles
 		tile_2.tile_highlight(true)
 		tile_5.tile_highlight(true)
 		tile_8.tile_highlight(true)
 		
+		# Set the losing tiles opaque
 		tile_1.tile_highlight(false)
 		tile_3.tile_highlight(false)
 		tile_4.tile_highlight(false)
@@ -348,11 +368,15 @@ func check_board(player):
 	
 	# Check win condition in the third column
 	if tiles_0[2] == player and tiles_1[2] == player and tiles_2[2] == player:
+		# Set the win condition player symbol
 		win_condition = player
+		
+		# Highlight the wining tiles
 		tile_3.tile_highlight(true)
 		tile_6.tile_highlight(true)
 		tile_9.tile_highlight(true)
 		
+		# Set the losing tiles opaque
 		tile_1.tile_highlight(false)
 		tile_2.tile_highlight(false)
 		tile_4.tile_highlight(false)
@@ -363,11 +387,15 @@ func check_board(player):
 	# Section that checks if the winning conditions where met in any diagonal
 	# Check win condition in the diagonal from left to right
 	if tiles_0[0] == player and tiles_1[1] == player and tiles_2[2] == player:
+		# Set the win condition player symbol
 		win_condition = player
+		
+		# Highlight the wining tiles
 		tile_1.tile_highlight(true)
 		tile_5.tile_highlight(true)
 		tile_9.tile_highlight(true)
 		
+		# Set the losing tiles opaque
 		tile_2.tile_highlight(false)
 		tile_3.tile_highlight(false)
 		tile_4.tile_highlight(false)
@@ -377,11 +405,15 @@ func check_board(player):
 	
 	# Check win condition in the diagonal from right to left
 	if tiles_0[2] == player and tiles_1[1] == player and tiles_2[0] == player:
+		# Set the win condition player symbol
 		win_condition = player
+		
+		# Highlight the wining tiles
 		tile_3.tile_highlight(true)
 		tile_5.tile_highlight(true)
 		tile_7.tile_highlight(true)
 		
+		# Set the losing tiles opaque
 		tile_1.tile_highlight(false)
 		tile_2.tile_highlight(false)
 		tile_4.tile_highlight(false)
@@ -391,12 +423,25 @@ func check_board(player):
 	
 	# Check if any of the above win conditions where met
 	if win_condition != "":
+		# Set the gamestate to GAME_OVER
 		gameState = GAME_STATE.GAME_OVER
+		
+		# Update the text of the game's status bar
 		update_status_bar("Player " + player + " wins!")
+		
+		# Show the game over panel
 		gameOverPanel.show()
+		
+		# Activate the confetti particle generators
 		shoot_confetti()
+		
+		# Stop the in game background music
 		backgroundMusic.stop()
+		
+		# Set the winning background music
 		backgroundMusic.stream = preload("res://Assets/Music/JDSherbert - Minigame Music Pack - Blackjack.ogg")
+		
+		# play the winning background music
 		backgroundMusic.play()
 		
 		# Disable all tiles, no draw condition

@@ -177,9 +177,10 @@ metadata/_edit_vertical_guides_ = [32.0, 448.0]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_r05b2")
+volume_db = -5.0
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = 3.0
+volume_db = -5.0
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 3

@@ -61,10 +61,6 @@ func _ready():
 	# Play the background music
 	backgroundMusic.play()
 
-# For muting development
-func _process(_delta):
-	backgroundMusic.stop()
-
 # Called to update the status bar text
 func update_status_bar(text):
 	# Update the status bar text
@@ -159,11 +155,15 @@ func check_board(player):
 	# Section that checks if the winning conditions where met in any row
 	# Check win condition in the first row
 	if tiles_0[0] == player and tiles_0[1] == player and tiles_0[2] == player:
+		# Set the win condition player symbol
 		win_condition = player
+		
+		# Highlight the wining tiles
 		tile_1.tile_highlight(true)
 		tile_2.tile_highlight(true)
 		tile_3.tile_highlight(true)
 		
+		# Set the losing tiles opaque
 		tile_4.tile_highlight(false)
 		tile_5.tile_highlight(false)
 		tile_6.tile_highlight(false)
@@ -173,11 +173,15 @@ func check_board(player):
 	
 	# Check win condition in the second row
 	if tiles_1[0] == player and tiles_1[1] == player and tiles_1[2] == player:
+		# Set the win condition player symbol
 		win_condition = player
+		
+		# Highlight the wining tiles
 		tile_4.tile_highlight(true)
 		tile_5.tile_highlight(true)
 		tile_6.tile_highlight(true)
 		
+		# Set the losing tiles opaque
 		tile_1.tile_highlight(false)
 		tile_2.tile_highlight(false)
 		tile_3.tile_highlight(false)
@@ -187,11 +191,15 @@ func check_board(player):
 	
 	# Check win condition in the third row
 	if tiles_2[0] == player and tiles_2[1] == player and tiles_2[2] == player:
+		# Set the win condition player symbol
 		win_condition = player
+		
+		# Highlight the wining tiles
 		tile_7.tile_highlight(true)
 		tile_8.tile_highlight(true)
 		tile_9.tile_highlight(true)
 		
+		# Set the losing tiles opaque
 		tile_1.tile_highlight(false)
 		tile_2.tile_highlight(false)
 		tile_3.tile_highlight(false)
@@ -202,11 +210,15 @@ func check_board(player):
 	# Section that checks if the winning conditions where met in any column
 	# Check win condition in the first column
 	if tiles_0[0] == player and tiles_1[0] == player and tiles_2[0] == player:
+		# Set the win condition player symbol
 		win_condition = player
+		
+		# Highlight the wining tiles
 		tile_1.tile_highlight(true)
 		tile_4.tile_highlight(true)
 		tile_7.tile_highlight(true)
 		
+		# Set the losing tiles opaque
 		tile_2.tile_highlight(false)
 		tile_3.tile_highlight(false)
 		tile_5.tile_highlight(false)
@@ -216,11 +228,15 @@ func check_board(player):
 	
 	# Check win condition in the second column
 	if tiles_0[1] == player and tiles_1[1] == player and tiles_2[1] == player:
+		# Set the win condition player symbol
 		win_condition = player
+		
+		# Highlight the wining tiles
 		tile_2.tile_highlight(true)
 		tile_5.tile_highlight(true)
 		tile_8.tile_highlight(true)
 		
+		# Set the losing tiles opaque
 		tile_1.tile_highlight(false)
 		tile_3.tile_highlight(false)
 		tile_4.tile_highlight(false)
@@ -230,11 +246,15 @@ func check_board(player):
 	
 	# Check win condition in the third column
 	if tiles_0[2] == player and tiles_1[2] == player and tiles_2[2] == player:
+		# Set the win condition player symbol
 		win_condition = player
+		
+		# Highlight the wining tiles
 		tile_3.tile_highlight(true)
 		tile_6.tile_highlight(true)
 		tile_9.tile_highlight(true)
 		
+		# Set the losing tiles opaque
 		tile_1.tile_highlight(false)
 		tile_2.tile_highlight(false)
 		tile_4.tile_highlight(false)
@@ -245,11 +265,15 @@ func check_board(player):
 	# Section that checks if the winning conditions where met in any diagonal
 	# Check win condition in the diagonal from left to right
 	if tiles_0[0] == player and tiles_1[1] == player and tiles_2[2] == player:
+		# Set the win condition player symbol
 		win_condition = player
+		
+		# Highlight the wining tiles
 		tile_1.tile_highlight(true)
 		tile_5.tile_highlight(true)
 		tile_9.tile_highlight(true)
 		
+		# Set the losing tiles opaque
 		tile_2.tile_highlight(false)
 		tile_3.tile_highlight(false)
 		tile_4.tile_highlight(false)
@@ -259,11 +283,15 @@ func check_board(player):
 	
 	# Check win condition in the diagonal from right to left
 	if tiles_0[2] == player and tiles_1[1] == player and tiles_2[0] == player:
+		# Set the win condition player symbol
 		win_condition = player
+		
+		# Highlight the wining tiles
 		tile_3.tile_highlight(true)
 		tile_5.tile_highlight(true)
 		tile_7.tile_highlight(true)
 		
+		# Set the losing tiles opaque
 		tile_1.tile_highlight(false)
 		tile_2.tile_highlight(false)
 		tile_4.tile_highlight(false)
@@ -273,15 +301,28 @@ func check_board(player):
 	
 	# Check if any of the above win conditions where met
 	if win_condition != "":
+		# Set the gamestate to GAME_OVER
 		gameState = GAME_STATE.GAME_OVER
+		
+		# Update the text of the game's status bar
 		update_status_bar("Player " + player + " wins!")
+		
+		# Show the game over panel
 		gameOverPanel.show()
+		
+		# Activate the confetti particle generators
 		shoot_confetti()
+		
+		# Stop the in game background music
 		backgroundMusic.stop()
+		
+		# Set the winning background music
 		backgroundMusic.stream = preload("res://Assets/Music/JDSherbert - Minigame Music Pack - Blackjack.ogg")
+		
+		# play the winning background music
 		backgroundMusic.play()
 		
-		# Disable all tiles, no draw condition
+		# Disable all tile's interactivity, no draw condition
 		disable_tiles(false)
 		
 		# Return false because of win condition
