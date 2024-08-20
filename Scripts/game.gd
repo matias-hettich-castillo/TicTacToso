@@ -61,6 +61,10 @@ func _ready():
 	# Play the background music
 	backgroundMusic.play()
 
+# For muting development
+func _process(_delta):
+	backgroundMusic.stop()
+
 # Called to update the status bar text
 func update_status_bar(text):
 	# Update the status bar text
@@ -151,32 +155,6 @@ func check_board(player):
 		if tiles_0[i] == "" or tiles_1[i] == "" or tiles_2[i] == "":
 			# Set the draw condition false if there was a blank tile somewhere
 			draw_condition = false
-	
-	# Check if there was a draw condition
-	if draw_condition:
-		# Set the game state to game over
-		gameState = GAME_STATE.GAME_OVER
-		
-		# Set the status bar to the draw message
-		update_status_bar("It's a draw!")
-		
-		# Show the game over panel
-		gameOverPanel.show()
-		
-		# Stop the background music
-		backgroundMusic.stop()
-		
-		# Preload the draw background music
-		backgroundMusic.stream = preload("res://Assets/Music/JDSherbert - Minigame Music Pack - Beach Vibes.ogg")
-		
-		# Play the background music
-		backgroundMusic.play()
-		
-		# Disable all tiles, draw condition
-		disable_tiles(true)
-		
-		# Return false because of draw condition
-		return false
 	
 	# Section that checks if the winning conditions where met in any row
 	# Check win condition in the first row
@@ -307,6 +285,32 @@ func check_board(player):
 		disable_tiles(false)
 		
 		# Return false because of win condition
+		return false
+	
+	# Check if there was a draw condition
+	if draw_condition:
+		# Set the game state to game over
+		gameState = GAME_STATE.GAME_OVER
+		
+		# Set the status bar to the draw message
+		update_status_bar("It's a draw!")
+		
+		# Show the game over panel
+		gameOverPanel.show()
+		
+		# Stop the background music
+		backgroundMusic.stop()
+		
+		# Preload the draw background music
+		backgroundMusic.stream = preload("res://Assets/Music/JDSherbert - Minigame Music Pack - Beach Vibes.ogg")
+		
+		# Play the background music
+		backgroundMusic.play()
+		
+		# Disable all tiles, draw condition
+		disable_tiles(true)
+		
+		# Return false because of draw condition
 		return false
 	
 	# Return true because win or draw conditions where not met

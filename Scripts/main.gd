@@ -11,6 +11,10 @@ func _ready():
 	# Play the background music
 	backgroundMusic.play()
 
+# For muting development
+func _process(_delta):
+	backgroundMusic.stop()
+
 # Called when the Start Game button is pressed
 func _on_start_game_button_button_down():
 	# Preload the button press sound effect
