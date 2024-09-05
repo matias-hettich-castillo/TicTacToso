@@ -101,7 +101,6 @@ func get_tile_value():
 
 # Sets the tile value for the cpu move
 func set_cpu_move_tile_value():
-	print("start set_cpu_move_tile_value function")
 	# Variable that stores the icon texture to show later
 	var icon_texture
 	
@@ -118,15 +117,9 @@ func set_cpu_move_tile_value():
 	tile_blank = false
 	
 	# Check if there wasn't a win or draw conditions
-	print("Check board for win conditions")
 	if $"../../..".check_board("O"):
-		print("Theres no win conditions")
 		# Update the status bar turn display
 		$"../../..".update_status_bar("Player's X turn")
-		
-		# Emit signal to inform turn change and make CPU move
-		print("emit signal and change turn")
-		#emit_signal("next_turn")
 
 # Called when the tile icon node is highlighted with the win or lose colors
 func tile_highlight(win):
