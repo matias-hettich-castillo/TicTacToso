@@ -42,10 +42,10 @@ script = ExtResource("1_40j1j")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_dyiua")
-volume_db = 5.0
+volume_db = -5.0
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = 3.0
+volume_db = -5.0
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 3
