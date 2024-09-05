@@ -4,9 +4,11 @@ This project was made in Godot as a part of me learning how to mess around with 
 
 You can play the game here: <a href="https://matiashettich.itch.io/tic-tac-toe-minigame-test">Tic-Tac-Toe Test</a>
 
+
+
+
 <p align="center">
-  ![Captura desde 2024-09-05 17-27-25](https://github.com/user-attachments/assets/7b678cd8-1c7f-4c6d-8343-adee1bc81a4f)
-  <img src="https://github.com/matias-hettich-castillo/TicTacToso/assets/7623785/fadd0d07-425e-4a5a-8503-361b3ea806bd" width="250" />
+  <img src="https://github.com/user-attachments/assets/c6eff672-cc58-4563-99c2-915be5e74185" width="250" />
   <img src="https://github.com/matias-hettich-castillo/TicTacToso/assets/7623785/016618c1-b5b0-41f4-b395-9eb9e40d922b" width="250" />
   <img src="https://github.com/matias-hettich-castillo/TicTacToso/assets/7623785/e4358325-cda7-4e0d-a84a-0d2874870580" width="250" />
 </p>
